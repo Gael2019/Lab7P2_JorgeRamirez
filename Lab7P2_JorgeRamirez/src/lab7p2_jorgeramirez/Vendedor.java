@@ -37,9 +37,13 @@ public class Vendedor {
         this.dineroGenerado = dineroGenerado;
     }
 
-    public Vendedor(String nombre) {
+    public Vendedor(String nombre, int cantidadCarrosVendidos, double dineroGenerado) {
         this.nombre = nombre;
+        this.cantidadCarrosVendidos = cantidadCarrosVendidos;
+        this.dineroGenerado = dineroGenerado;
     }
+
+    
 
     @Override
     public String toString() {

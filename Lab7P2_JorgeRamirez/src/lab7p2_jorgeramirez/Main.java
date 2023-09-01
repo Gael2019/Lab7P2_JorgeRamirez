@@ -44,7 +44,7 @@ public class Main extends javax.swing.JFrame {
         MarcaCrearVehiculo = new javax.swing.JTextField();
         AñoCrearVehiculo = new javax.swing.JTextField();
         PrecioCrearVehiculo = new javax.swing.JTextField();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        BotonCrearVehiculo = new javax.swing.JToggleButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -55,18 +55,20 @@ public class Main extends javax.swing.JFrame {
         EdadCliente = new javax.swing.JTextField();
         SueldoCliente = new javax.swing.JTextField();
         ProfesionCliente = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        BotonCrearCliente = new javax.swing.JToggleButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         NombreCrearVendedor = new javax.swing.JTextField();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        BotonCrearVendedort = new javax.swing.JToggleButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,10 +101,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton2.setText("CREAR");
-        jToggleButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        BotonCrearVehiculo.setText("CREAR");
+        BotonCrearVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jToggleButton2MouseClicked(evt);
+                BotonCrearVehiculoMouseClicked(evt);
             }
         });
 
@@ -131,7 +133,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(288, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BotonCrearVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(313, 313, 313))
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,7 +158,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(PrecioCrearVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
-                .addComponent(jToggleButton2)
+                .addComponent(BotonCrearVehiculo)
                 .addGap(73, 73, 73))
         );
 
@@ -177,15 +179,15 @@ public class Main extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setText("Profesion");
 
-        jToggleButton1.setText("CREAR");
-        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        BotonCrearCliente.setText("CREAR");
+        BotonCrearCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jToggleButton1MouseClicked(evt);
+                BotonCrearClienteMouseClicked(evt);
             }
         });
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        BotonCrearCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                BotonCrearClienteActionPerformed(evt);
             }
         });
 
@@ -200,7 +202,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jLabel7))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(288, 288, 288)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BotonCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +250,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jLabel11)
                             .addComponent(ProfesionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(74, 74, 74)))
-                .addComponent(jToggleButton1)
+                .addComponent(BotonCrearCliente)
                 .addGap(56, 56, 56))
         );
 
@@ -259,10 +261,15 @@ public class Main extends javax.swing.JFrame {
 
         jLabel6.setText("NOMBRE");
 
-        jToggleButton3.setText("CREAR");
-        jToggleButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        BotonCrearVendedort.setText("CREAR");
+        BotonCrearVendedort.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jToggleButton3MouseClicked(evt);
+                BotonCrearVendedortMouseClicked(evt);
+            }
+        });
+        BotonCrearVendedort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCrearVendedortActionPerformed(evt);
             }
         });
 
@@ -283,7 +290,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(NombreCrearVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(295, 295, 295)
-                        .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(BotonCrearVendedort, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -296,7 +303,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(NombreCrearVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
-                .addComponent(jToggleButton3)
+                .addComponent(BotonCrearVendedort)
                 .addGap(55, 55, 55))
         );
 
@@ -305,13 +312,20 @@ public class Main extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel13.setText("CREAR VENTA");
 
-        jLabel14.setText("jLabel14");
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel14.setText("Vehiculo");
 
-        jLabel15.setText("jLabel15");
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel15.setText("Cliente");
 
-        jLabel16.setText("jLabel16");
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel16.setText("Vendedor");
 
-        jLabel17.setText("jLabel17");
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -325,10 +339,14 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel14))
+                        .addGap(60, 60, 60)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(300, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -336,15 +354,19 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(jLabel13)
-                .addGap(35, 35, 35)
-                .addComponent(jLabel14)
-                .addGap(54, 54, 54)
-                .addComponent(jLabel15)
-                .addGap(63, 63, 63)
-                .addComponent(jLabel16)
-                .addGap(62, 62, 62)
-                .addComponent(jLabel17)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Venta", jPanel4);
@@ -357,7 +379,7 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -371,7 +393,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AñoCrearVehiculoActionPerformed
 
-    private void jToggleButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseClicked
+    private void BotonCrearVehiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonCrearVehiculoMouseClicked
         // TODO add your handling code here:
         File CarroArchivo = null;
         FileWriter fw = null;
@@ -403,24 +425,17 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Hubo un problema al agregar un vehiculo");
         }
-    }//GEN-LAST:event_jToggleButton2MouseClicked
+    }//GEN-LAST:event_BotonCrearVehiculoMouseClicked
 
     private void ModeloCrearVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModeloCrearVehiculoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ModeloCrearVehiculoActionPerformed
 
-    private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jToggleButton1MouseClicked
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void BotonCrearClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonCrearClienteMouseClicked
         // TODO add your handling code here:
         File CarroArchivo = null;
         FileWriter fw = null;
         BufferedWriter bw =  null;
-        
-        
         
         try {
             CarroArchivo = new File("./Cliente.txt");
@@ -428,29 +443,73 @@ public class Main extends javax.swing.JFrame {
             bw = new BufferedWriter(fw);
             bw.write("[\n");
             String name = NombreCliente.getText();
+            int age = Integer.parseInt(EdadCliente.getText());
+            String Profesion = ProfesionCliente.getText();
+            double salario = Double.parseDouble(SueldoCliente.getText());
             String fin = "";
             fin +=(name+"\n");
+            fin +=(age+"\n");
+            fin+=(Profesion+"\n");
+            fin+=(salario+"\n");
             fin += ("[");
+            
+            bw.write(fin);
+            JOptionPane.showMessageDialog(this, "El cliente ha sido creado exitosamente");
+            Clientes.add(new Cliente(name, age, Profesion, 0, salario));
+            bw.flush();
+            fw.close();
+            fw.close();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No se pudo agregar el cliente");
         }
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
-    private void jToggleButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton3MouseClicked
-        // TODO add your handling code here:
-        File CarroArchivo = null;
-        FileWriter fw = null;
-        BufferedWriter bw =  null;
         
+    }//GEN-LAST:event_BotonCrearClienteMouseClicked
+
+    private void BotonCrearClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearClienteActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BotonCrearClienteActionPerformed
+
+    private void BotonCrearVendedortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonCrearVendedortMouseClicked
+        // TODO add your handling code here:
+        File vendedorArchivo = null;
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+
         try {
-            CarroArchivo = new File("./Vehiculos.txt");
-            fw = new FileWriter(CarroArchivo, true);
+            vendedorArchivo = new File("./Vendedor.txt");
+            fw = new FileWriter(vendedorArchivo, true);
             bw = new BufferedWriter(fw);
+
             bw.write("[\n");
-            String Nombre = NombreCrearVendedor.getText();
+            String nombre = NombreCrearVendedor.getText();
             String fin = "";
+            bw.write(fin);
+
+            JOptionPane.showMessageDialog(null, "El vendedor ha sido creado exitosamente");
+            vendedor.add(new Vendedor(nombre, 0, 0));
+            bw.flush();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo agregar el vendedor");
+        } finally {
+            try {
+                if (bw != null) {
+                    bw.close();
+                }
+                if (fw != null) {
+                    fw.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-    }//GEN-LAST:event_jToggleButton3MouseClicked
+    
+    }//GEN-LAST:event_BotonCrearVendedortMouseClicked
+
+    private void BotonCrearVendedortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearVendedortActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BotonCrearVendedortActionPerformed
 
     /**
      * @param args the command line arguments
@@ -487,8 +546,13 @@ public class Main extends javax.swing.JFrame {
         });
     }
     ArrayList <Vehiculo> Carros = new ArrayList();
+    ArrayList <Cliente> Clientes = new ArrayList();
+    ArrayList <Vendedor> vendedor = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AñoCrearVehiculo;
+    private javax.swing.JToggleButton BotonCrearCliente;
+    private javax.swing.JToggleButton BotonCrearVehiculo;
+    private javax.swing.JToggleButton BotonCrearVendedort;
     private javax.swing.JTextField EdadCliente;
     private javax.swing.JTextField MarcaCrearVehiculo;
     private javax.swing.JTextField ModeloCrearVehiculo;
@@ -497,6 +561,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField PrecioCrearVehiculo;
     private javax.swing.JTextField ProfesionCliente;
     private javax.swing.JTextField SueldoCliente;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -505,7 +572,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -519,9 +585,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
     // End of variables declaration//GEN-END:variables
 
 }

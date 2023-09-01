@@ -1,0 +1,11 @@
+[
+juan
+22
+ingeniero en sistemas
+75000.0
+[[
+juan
+20
+stripper
+50000.0
+[
