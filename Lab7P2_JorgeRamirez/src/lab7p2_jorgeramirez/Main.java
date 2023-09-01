@@ -66,9 +66,10 @@ public class Main extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        ComboBoxVehiculo = new javax.swing.JComboBox<>();
+        ComboBoxCliente = new javax.swing.JComboBox<>();
+        ComboBoxVendedor = new javax.swing.JComboBox<>();
+        BotonVenta = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -321,11 +322,18 @@ public class Main extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel16.setText("Vendedor");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxVehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxClienteActionPerformed(evt);
+            }
+        });
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxVendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        BotonVenta.setText("CREAR");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -344,9 +352,12 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jLabel14))
                         .addGap(60, 60, 60)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(ComboBoxVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComboBoxVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(297, 297, 297)
+                        .addComponent(BotonVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(300, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -357,16 +368,18 @@ public class Main extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboBoxVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(219, Short.MAX_VALUE))
+                    .addComponent(ComboBoxVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addComponent(BotonVenta)
+                .addGap(95, 95, 95))
         );
 
         jTabbedPane1.addTab("Venta", jPanel4);
@@ -405,7 +418,9 @@ public class Main extends javax.swing.JFrame {
             bw = new BufferedWriter(fw);
             bw.write("[\n");
             String Marca = MarcaCrearVehiculo.getText();
+            System.out.println(Marca);
             String Modelo = ModeloCrearVehiculo.getText();
+            System.out.println(Modelo);
             double precio = Double.parseDouble(PrecioCrearVehiculo.getText());
             String ano = AñoCrearVehiculo.getText();
             String fin = "";
@@ -417,12 +432,14 @@ public class Main extends javax.swing.JFrame {
             int numero = 1;
             int ID = 123478;
             bw.write(fin);
+            System.out.println(fin);
             JOptionPane.showMessageDialog(this, "El vehiculo ha sido creado con exito");
             Carros.add(new Vehiculo(Marca, Color.yellow, Modelo, ano, ID, precio));
             bw.flush();
             fw.close();
             fw.close();
         } catch (Exception e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Hubo un problema al agregar un vehiculo");
         }
     }//GEN-LAST:event_BotonCrearVehiculoMouseClicked
@@ -443,6 +460,7 @@ public class Main extends javax.swing.JFrame {
             bw = new BufferedWriter(fw);
             bw.write("[\n");
             String name = NombreCliente.getText();
+            System.out.println(name);
             int age = Integer.parseInt(EdadCliente.getText());
             String Profesion = ProfesionCliente.getText();
             double salario = Double.parseDouble(SueldoCliente.getText());
@@ -454,6 +472,7 @@ public class Main extends javax.swing.JFrame {
             fin += ("[");
             
             bw.write(fin);
+            System.out.println(fin);
             JOptionPane.showMessageDialog(this, "El cliente ha sido creado exitosamente");
             Clientes.add(new Cliente(name, age, Profesion, 0, salario));
             bw.flush();
@@ -461,6 +480,7 @@ public class Main extends javax.swing.JFrame {
             fw.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No se pudo agregar el cliente");
+            
         }
         
     }//GEN-LAST:event_BotonCrearClienteMouseClicked
@@ -511,6 +531,10 @@ public class Main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BotonCrearVendedortActionPerformed
 
+    private void ComboBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -553,6 +577,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JToggleButton BotonCrearCliente;
     private javax.swing.JToggleButton BotonCrearVehiculo;
     private javax.swing.JToggleButton BotonCrearVendedort;
+    private javax.swing.JToggleButton BotonVenta;
+    private javax.swing.JComboBox<String> ComboBoxCliente;
+    private javax.swing.JComboBox<String> ComboBoxVehiculo;
+    private javax.swing.JComboBox<String> ComboBoxVendedor;
     private javax.swing.JTextField EdadCliente;
     private javax.swing.JTextField MarcaCrearVehiculo;
     private javax.swing.JTextField ModeloCrearVehiculo;
@@ -561,9 +589,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField PrecioCrearVehiculo;
     private javax.swing.JTextField ProfesionCliente;
     private javax.swing.JTextField SueldoCliente;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
