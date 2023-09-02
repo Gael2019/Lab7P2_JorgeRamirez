@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -506,8 +507,8 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         File CarroArchivo = null;
         FileWriter fw = null;
-        BufferedWriter bw =  null;
-        
+        BufferedWriter bw = null;
+
         try {
             CarroArchivo = new File("./Vehiculos.txt");
             fw = new FileWriter(CarroArchivo, true);
@@ -520,10 +521,10 @@ public class Main extends javax.swing.JFrame {
             double precio = Double.parseDouble(PrecioCrearVehiculo.getText());
             String ano = AñoCrearVehiculo.getText();
             String fin = "";
-            fin +=(Marca+"\n");
-            fin +=(Modelo+"\n");
-            fin +=(precio+"\n");
-            fin += (ano+"\n");
+            fin += (Marca + "\n");
+            fin += (Modelo + "\n");
+            fin += (precio + "\n");
+            fin += (ano + "\n");
             fin += ("[");
             int numero = 1;
             int ID = 123478;
@@ -548,8 +549,8 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         File CarroArchivo = null;
         FileWriter fw = null;
-        BufferedWriter bw =  null;
-        
+        BufferedWriter bw = null;
+
         try {
             CarroArchivo = new File("./Cliente.txt");
             fw = new FileWriter(CarroArchivo, true);
@@ -561,12 +562,12 @@ public class Main extends javax.swing.JFrame {
             String Profesion = ProfesionCliente.getText();
             double salario = Double.parseDouble(SueldoCliente.getText());
             String fin = "";
-            fin +=(name+"\n");
-            fin +=(age+"\n");
-            fin+=(Profesion+"\n");
-            fin+=(salario+"\n");
+            fin += (name + "\n");
+            fin += (age + "\n");
+            fin += (Profesion + "\n");
+            fin += (salario + "\n");
             fin += ("[");
-            
+
             bw.write(fin);
             System.out.println(fin);
             JOptionPane.showMessageDialog(this, "El cliente ha sido creado exitosamente");
@@ -576,22 +577,20 @@ public class Main extends javax.swing.JFrame {
             fw.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No se pudo agregar el cliente");
-            
+
         }
-        
+
     }//GEN-LAST:event_BotonCrearClienteMouseClicked
 
     private void BotonCrearClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearClienteActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_BotonCrearClienteActionPerformed
 
     private void BotonCrearVendedortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonCrearVendedortMouseClicked
         // TODO add your handling code here:
-         try (
-            FileWriter fw = new FileWriter(new File("./Vendedor.txt"), true);
-            BufferedWriter bw = new BufferedWriter(fw)
-        ) {
+        try (
+                FileWriter fw = new FileWriter(new File("./Vendedor.txt"), true); BufferedWriter bw = new BufferedWriter(fw)) {
             bw.write("[\n");
             String fin = "";
             String nombre = NombreCrearVendedor.getText();
@@ -605,36 +604,51 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No se pudo agregar el vendedor");
         }
-    
+
     }//GEN-LAST:event_BotonCrearVendedortMouseClicked
 
     private void BotonCrearVendedortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearVendedortActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_BotonCrearVendedortActionPerformed
 
     private void ComboBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxClienteActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; Clientes.size() < 5; i++) {
+
+                DefaultComboBoxModel modelo
+                        = (DefaultComboBoxModel) ComboBoxCliente.getModel();
+                Cliente temp = Clientes.get(i);
+                modelo.addElement(temp);
+                ComboBoxCliente.setModel(modelo);
+            }
     }//GEN-LAST:event_ComboBoxClienteActionPerformed
 
     private void ComboBoxVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxVehiculoActionPerformed
         // TODO add your handling code here:
-        
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) ComboBoxVehiculo.getModel();
+
+        for (int i = 0; i < Math.min(5, Carros.size()); i++) {
+            Vehiculo temp = Carros.get(i);
+            modelo.addElement(temp);
+        }
+
+        ComboBoxVehiculo.setModel(modelo);
     }//GEN-LAST:event_ComboBoxVehiculoActionPerformed
 
     private void BotonVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVentaActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_BotonVentaActionPerformed
 
     private void BotonActividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActividadesActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_BotonActividadesActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
@@ -671,9 +685,9 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
-    ArrayList <Vehiculo> Carros = new ArrayList();
-    ArrayList <Cliente> Clientes = new ArrayList();
-    ArrayList <Vendedor> vendedor = new ArrayList();
+    ArrayList<Vehiculo> Carros = new ArrayList();
+    ArrayList<Cliente> Clientes = new ArrayList();
+    ArrayList<Vendedor> vendedor = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AñoCrearVehiculo;
     private javax.swing.JToggleButton BotonActividades;
@@ -724,5 +738,3 @@ public class Main extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
-
-
