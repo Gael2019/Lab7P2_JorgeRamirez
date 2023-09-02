@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -332,21 +333,23 @@ public class Main extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel16.setText("Vendedor");
 
-        ComboBoxVehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ComboBoxVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxVehiculoActionPerformed(evt);
             }
         });
 
-        ComboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ComboBoxCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxClienteActionPerformed(evt);
             }
         });
 
-        ComboBoxVendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxVendedorActionPerformed(evt);
+            }
+        });
 
         BotonVenta.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         BotonVenta.setText("CREAR");
@@ -535,6 +538,13 @@ public class Main extends javax.swing.JFrame {
             bw.flush();
             fw.close();
             fw.close();
+
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) ComboBoxVehiculo.getModel();
+            for (int i = 0; i < Math.min(5, Carros.size()); i++) {
+                Vehiculo veh = Carros.get(i);
+                modelo.addElement(veh);
+            }
+            ComboBoxVehiculo.setModel(modelo);
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Hubo un problema al agregar un vehiculo");
@@ -575,6 +585,16 @@ public class Main extends javax.swing.JFrame {
             bw.flush();
             fw.close();
             fw.close();
+
+            for (int i = 0; Clientes.size() < 5; i++) {
+
+                DefaultComboBoxModel modelo
+                        = (DefaultComboBoxModel) ComboBoxCliente.getModel();
+                Cliente temp = Clientes.get(i);
+                modelo.addElement(temp);
+                ComboBoxCliente.setModel(modelo);
+            }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No se pudo agregar el cliente");
 
@@ -590,7 +610,7 @@ public class Main extends javax.swing.JFrame {
     private void BotonCrearVendedortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonCrearVendedortMouseClicked
         // TODO add your handling code here:
         try (
-                FileWriter fw = new FileWriter(new File("./Vendedor.txt"), true); BufferedWriter bw = new BufferedWriter(fw)) {
+            FileWriter fw = new FileWriter(new File("./Vendedor.txt"), true); BufferedWriter bw = new BufferedWriter(fw)) {
             bw.write("[\n");
             String fin = "";
             String nombre = NombreCrearVendedor.getText();
@@ -608,37 +628,87 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonCrearVendedortMouseClicked
 
     private void BotonCrearVendedortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearVendedortActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:}
+        //repeti el codigo porque me confundi pero no lista el vendedor
+        try (
+                FileWriter fw = new FileWriter(new File("./Vendedor.txt"), true); 
+                BufferedWriter bw = new BufferedWriter(fw)) {
+            bw.write("[\n");
+            String fin = "";
+            String nombre = NombreCrearVendedor.getText();
+            fin += nombre;
+            fin += ("[");
+            bw.write(fin);
 
+            JOptionPane.showMessageDialog(this, "El vendedor ha sido creado exitosamente");
+            vendedor.add(new Vendedor(nombre, 0, 0));
+            bw.flush();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No se pudo agregar el vendedor");
+        }
     }//GEN-LAST:event_BotonCrearVendedortActionPerformed
 
     private void ComboBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxClienteActionPerformed
         // TODO add your handling code here:
-        for (int i = 0; Clientes.size() < 5; i++) {
-
-                DefaultComboBoxModel modelo
-                        = (DefaultComboBoxModel) ComboBoxCliente.getModel();
-                Cliente temp = Clientes.get(i);
-                modelo.addElement(temp);
-                ComboBoxCliente.setModel(modelo);
-            }
     }//GEN-LAST:event_ComboBoxClienteActionPerformed
 
     private void ComboBoxVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxVehiculoActionPerformed
         // TODO add your handling code here:
-        DefaultComboBoxModel modelo = (DefaultComboBoxModel) ComboBoxVehiculo.getModel();
 
-        for (int i = 0; i < Math.min(5, Carros.size()); i++) {
-            Vehiculo temp = Carros.get(i);
-            modelo.addElement(temp);
-        }
-
-        ComboBoxVehiculo.setModel(modelo);
     }//GEN-LAST:event_ComboBoxVehiculoActionPerformed
 
     private void BotonVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVentaActionPerformed
         // TODO add your handling code here:
+        Vehiculo carros = (Vehiculo) ComboBoxVehiculo.getSelectedItem();
+        Cliente Clientela = (Cliente) ComboBoxCliente.getSelectedItem();
+        Vendedor Vende = (Vendedor) ComboBoxVendedor.getSelectedItem();
 
+        // Agregamos la venta
+        ventas.add(new Venta(Vende, Clientela, 0, carros));
+        JOptionPane.showMessageDialog(this, "");
+        JOptionPane.showMessageDialog(this, "Venta registrada");
+
+        File CarroArchivo = null;
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+
+        try {
+            CarroArchivo = new File("./VentasDia.txt");
+            fw = new FileWriter(CarroArchivo, true);
+            bw = new BufferedWriter(fw);
+            bw.write("[\n");
+            String MarcaVehiculo = carros.getMarca();
+            String nombre = Clientela.getNombre();
+            String Vendedor = Vende.getNombre();
+            double precio = carros.getPrecioVenta();
+            String PrecioVenta = precio + "";
+            String fin = "";
+            fin += (MarcaVehiculo + "\n");
+            fin += (nombre+ "\n");
+            fin += (Vendedor + "\n");
+            fin += (PrecioVenta + "\n");
+            fin += ("]");
+            bw.write(fin);
+            bw.flush();
+            bw.close();
+            fw.close();
+            JOptionPane.showMessageDialog(this, "La venta ha sido registrada");
+
+            DefaultComboBoxModel modeloVendedor = (DefaultComboBoxModel) ComboBoxVendedor.getModel();
+
+            int limite = Math.min(5, ventas.size()); 
+
+            for (int i = 0; i < limite; i++) {
+                if (i < ventas.size()) {
+                    Venta p = ventas.get(i);
+                    modeloVendedor.addElement(p);
+                }
+            }
+
+            ComboBoxVendedor.setModel(modeloVendedor);
+        } catch (IOException ex) {
+
+        }
     }//GEN-LAST:event_BotonVentaActionPerformed
 
     private void BotonActividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActividadesActionPerformed
@@ -650,6 +720,11 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void ComboBoxVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxVendedorActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_ComboBoxVendedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -688,6 +763,7 @@ public class Main extends javax.swing.JFrame {
     ArrayList<Vehiculo> Carros = new ArrayList();
     ArrayList<Cliente> Clientes = new ArrayList();
     ArrayList<Vendedor> vendedor = new ArrayList();
+    ArrayList<Venta> ventas = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AñoCrearVehiculo;
     private javax.swing.JToggleButton BotonActividades;
