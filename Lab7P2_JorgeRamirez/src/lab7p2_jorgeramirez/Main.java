@@ -665,7 +665,7 @@ public class Main extends javax.swing.JFrame {
 
         // Agregamos la venta
         ventas.add(new Venta(Vende, Clientela, 0, carros));
-        JOptionPane.showMessageDialog(this, "");
+        JOptionPane.showMessageDialog(this, "corrcto");
         JOptionPane.showMessageDialog(this, "Venta registrada");
 
         File CarroArchivo = null;
@@ -707,7 +707,8 @@ public class Main extends javax.swing.JFrame {
 
             ComboBoxVendedor.setModel(modeloVendedor);
         } catch (IOException ex) {
-
+            JOptionPane.showMessageDialog(this, "UY");
+            JOptionPane.showMessageDialog(this, "Su venta no ha sido registrada intente nuevamente");
         }
     }//GEN-LAST:event_BotonVentaActionPerformed
 
