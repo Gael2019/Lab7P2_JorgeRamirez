@@ -451,6 +451,11 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTree2);
 
         jToggleButton2.setText("LISTAR");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -583,38 +588,22 @@ public class Main extends javax.swing.JFrame {
 
     private void BotonCrearVendedortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonCrearVendedortMouseClicked
         // TODO add your handling code here:
-        File vendedorArchivo = null;
-        FileWriter fw = null;
-        BufferedWriter bw = null;
-
-        try {
-            vendedorArchivo = new File("./Vendedor.txt");
-            fw = new FileWriter(vendedorArchivo, true);
-            bw = new BufferedWriter(fw);
-
+         try (
+            FileWriter fw = new FileWriter(new File("./Vendedor.txt"), true);
+            BufferedWriter bw = new BufferedWriter(fw)
+        ) {
             bw.write("[\n");
             String fin = "";
             String nombre = NombreCrearVendedor.getText();
-            fin+=nombre;
+            fin += nombre;
             fin += ("[");
             bw.write(fin);
 
-            JOptionPane.showMessageDialog(null, "El vendedor ha sido creado exitosamente");
+            JOptionPane.showMessageDialog(this, "El vendedor ha sido creado exitosamente");
             vendedor.add(new Vendedor(nombre, 0, 0));
             bw.flush();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo agregar el vendedor");
-        } finally {
-            try {
-                if (bw != null) {
-                    bw.close();
-                }
-                if (fw != null) {
-                    fw.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            JOptionPane.showMessageDialog(this, "No se pudo agregar el vendedor");
         }
     
     }//GEN-LAST:event_BotonCrearVendedortMouseClicked
@@ -640,7 +629,13 @@ public class Main extends javax.swing.JFrame {
 
     private void BotonActividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActividadesActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_BotonActividadesActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
      * @param args the command line arguments
